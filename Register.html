@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EFE8DF; /* Light Beige */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            padding-inline: 40px;
+            text-align: center;
+            margin: 0;
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .banner-video {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .v-input {
+            margin-bottom: 1rem;
+            position: relative;
+            text-align: left;
+        }
+        .v-label {
+            position: absolute;
+            left: 0px;
+            top: -20px;
+            font-size: 14px;
+            color: #000;
+        }
+        .v-input__control {
+            padding: 10px 0;
+            position: relative;
+        }
+        .v-text-field__slot {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #F3A84E; /* Gradient base color */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #6A4C3A; /* Brown hover color */
+        }
+        a {
+            color: #6A4C3A; /* Brown for link */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center ma-0">
+    
+    <!-- Banner Video -->
+    <video class="banner-video" controls autoplay muted loop>
+        <source src="KonkaRegistration.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <form class="mb-4">
+        <!-- Full Name -->
+        <div class="v-input v-input--has-state theme--light v-text-field v-text-field--is-booted">
+            <div class="v-input__control">
+                <div class="v-input__slot">
+                    <div class="v-text-field__slot">
+                        <label for="full-name" class="v-label theme--light">Full Name</label>
+                        <input required="required" id="full-name" type="text" placeholder="Enter Full Name">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Email -->
+        <div class="v-input v-input--has-state theme--light v-text-field v-text-field--is-booted">
+            <div class="v-input__control">
+                <div class="v-input__slot">
+                    <div class="v-text-field__slot">
+                        <label for="email" class="v-label theme--light">Email</label>
+                        <input required="required" id="email" type="email" placeholder="Enter Email">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cellphone Number -->
+        <div class="v-input v-input--has-state theme--light v-text-field v-text-field--is-booted">
+            <div class="v-input__control">
+                <div class="v-input__slot">
+                    <div class="v-text-field__slot">
+                        <label for="cellphone" class="v-label theme--light">Cellphone Number</label>
+                        <input required="required" id="cellphone" type="tel" placeholder="Enter Mobile Number" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Table Package Dropdown -->
+        <div class="v-input v-input--has-state theme--light v-text-field v-text-field--is-booted">
+            <div class="v-input__control">
+                <div class="v-input__slot">
+                    <div class="v-text-field__slot">
+                        <label for="table-package" class="v-label theme--light">Table Package</label>
+                        <select id="table-package" required>
+                            <option value="" disabled selected>Select your table package</option>
+                            <option value="15000">R15000 for 6 tags | R11000 Bar Tab | Dedicated Waiter</option>
+                            <option value="35000">R35000 for 8 VIP tags | R30000 Bar Tab | Dedicated Waiter</option>
+                            <option value="50000">R50000 for 10 VVIP tags | R43000 Bar Tab | Deck VIEW | Dedicated Waiter</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="mt-2 mb-4 white--text v-btn v-btn--block v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--large secondary">
+            <span class="v-btn__content">Register</span>
+        </button>
+    </form>
+    
+    <!-- Registration Link -->
+    <p><a href="Login.html" class="">Already have an account? Login</a></p>
+</div>
+
+</body>
+</html>

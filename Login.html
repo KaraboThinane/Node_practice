@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EFE8DF; /* Light Beige */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            padding-inline: 40px;
+            text-align: center;
+            margin: 0;
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .banner-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .v-input {
+            margin-bottom: 1rem;
+            position: relative;
+            text-align: left;
+        }
+        .v-label {
+            position: absolute;
+            left: 0px;
+            top: -20px;
+            font-size: 14px;
+            color: #FF5252; /* Red for error state */
+        }
+        .v-input__control {
+            padding: 10px 0;
+            position: relative;
+        }
+        .v-text-field__slot {
+            display: flex;
+            align-items: center;
+        }
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .error--text {
+            color: #FF5252;
+        }
+        .v-messages__wrapper {
+            margin-top: 4px;
+        }
+        .v-messages__message {
+            font-size: 12px;
+            color: #FF5252;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #F3A84E; /* Gradient base color */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #6A4C3A; /* Brown hover color */
+        }
+        a {
+            color: #6A4C3A; /* Brown for link */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center ma-0">
+    
+    <!-- Banner Image -->
+    <img src="https://instagram.fpry1-1.fna.fbcdn.net/v/t51.2885-19/447925017_468697285637296_8194510312384377398_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fpry1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=CS0skmuR0Q8Q7kNvgHrscsw&_nc_gid=acce3bf6e3694cf5b54a80d8cf620b66&edm=APoiHPcBAAAA&ccb=7-5&oh=00_AYAK1OT04Gtz0WqzhfxwjVbbrW4Ht-4oq2KZbaAidgRavA&oe=670AFCAD&_nc_sid=22de04" alt="Banner Image" class="banner-image">
+    <form class="mb-4">
+        <input type="hidden" name="conferenceId">
+        
+        <!-- Mobile Number Input Field -->
+        <div class="v-input v-input--has-state theme--light v-text-field v-text-field--is-booted error--text">
+            <div class="v-input__control">
+                <div class="v-input__slot">
+                    <div class="v-text-field__slot">
+                        <label for="input-486" class="v-label theme--light error--text" style="left: 0px; right: auto; position: absolute;">Mobile Number</label>
+                        <input required="required" id="input-486" type="tel" placeholder="Enter Mobile Number" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number">
+                    </div>
+                </div>
+                <!-- Error Message -->
+                <div class="v-text-field__details">
+                    <div class="v-messages theme--light error--text" role="alert">
+                        <div class="v-messages__wrapper">
+                            <div class="v-messages__message">Field is required</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Request OTP Button -->
+        <button type="button"  class="mt-2 mb-4 white--text v-btn v-btn--block v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--large secondary" onclick="redirectToWaiterPage()">
+            <span href="Waiter.html" class="v-btn__content">Request OTP</span>
+        </button>
+        
+    </form>
+    
+    <!-- Registration Link -->
+    <p><a href="Register.html" class="">Register</a></p>
+</div>
+
+<script>
+    // Function to redirect to "Waiter.html" when the Request OTP button is clicked
+    function redirectToWaiterPage() {
+        // Add any validation or processing logic here if needed
+        window.location.href = "Waiter.html"; // Redirects to the waiter page
+    }
+</script>
+
+</body>
+</html>

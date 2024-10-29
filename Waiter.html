@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Waiter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EFE8DF; /* Light Beige */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            padding-inline: 40px;
+            text-align: center;
+            margin: 0;
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .banner-video {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #F3A84E; /* Gradient base color */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #6A4C3A; /* Brown hover color */
+        }
+        a {
+            color: #6A4C3A; /* Brown for link */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        #timer {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #stopButton {
+            display: none;
+            margin-top: 20px;
+        }
+        .menu-section {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .menu-section h3 {
+            color: #6A4C3A;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center ma-0">
+    
+    <!-- Banner Video -->
+    <video class="banner-video" controls autoplay muted loop>
+        <source src="KonkaRegistration.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Menu Section -->
+    <form id="orderForm">
+        <div class="menu-section">
+            <h3>Tequila</h3>
+            <div class="menu-item"><span>Patron Silver</span><input type="checkbox" name="order" value="Patron Silver - R1800"></div>
+            <div class="menu-item"><span>Patron Reposado</span><input type="checkbox" name="order" value="Patron Reposado - R2500"></div>
+            <div class="menu-item"><span>Don Julio 1942</span><input type="checkbox" name="order" value="Don Julio 1942 - R11000"></div>
+        </div>
+
+        <div class="menu-section">
+            <h3>Whisky</h3>
+            <div class="menu-item"><span>Glenfiddich 15yrs</span><input type="checkbox" name="order" value="Glenfiddich 15yrs - R2800"></div>
+            <div class="menu-item"><span>Glenfiddich 18yrs</span><input type="checkbox" name="order" value="Glenfiddich 18yrs - R4500"></div>
+            <div class="menu-item"><span>John Walker Blue</span><input type="checkbox" name="order" value="John Walker Blue - R7000"></div>
+        </div>
+
+        <div class="menu-section">
+            <h3>Soft Drinks</h3>
+            <div class="menu-item"><span>Coke</span><input type="checkbox" name="order" value="Coke - R35.00"></div>
+            <div class="menu-item"><span>Red Bull</span><input type="checkbox" name="order" value="Red Bull - R50.00"></div>
+        </div>
+
+        <button type="submit" id="submitOrderButton" class="mt-2 mb-4">Submit Order & Request Waiter</button>
+    </form>
+    
+    <!-- Timer Display -->
+    <div id="timer"></div>
+    
+    <!-- Stop Timer Button -->
+    <button id="stopButton" class="mt-2 mb-4">Order Delivered - Stop Timer</button>
+    
+</div>
+
+<script>
+    let timerInterval;
+    let timeRemaining = 600; // 10 minutes in seconds
+
+    // Function to format time as MM:SS
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secondsRemaining = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
+    }
+
+    // Function to start the timer
+    function startTimer() {
+        document.getElementById('timer').textContent = formatTime(timeRemaining);
+        document.getElementById('stopButton').style.display = 'block'; // Show the stop button
+        timerInterval = setInterval(() => {
+            timeRemaining--;
+            document.getElementById('timer').textContent = formatTime(timeRemaining);
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('timer').textContent = 'Waiter arrived!';
+            }
+        }, 1000);
+    }
+
+    // Event listener for Order submission and Request Waiter button
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const selectedItems = Array.from(document.querySelectorAll('input[name="order"]:checked'))
+                                   .map(item => item.value)
+                                   .join(', ');
+        alert('Order: ' + selectedItems + '\nCalling the waiter. Please wait for up to 10 minutes.');
+        timeRemaining = 600; // Reset to 10 minutes
+        startTimer();
+    });
+
+    // Event listener for Stop Timer button
+    document.getElementById('stopButton').addEventListener('click', function() {
+        clearInterval(timerInterval);
+        document.getElementById('timer').textContent = 'Order delivered. Timer stopped.';
+        document.getElementById('stopButton').style.display = 'none'; // Hide the stop button
+    });
+</script>
+
+</body>
+</html>
